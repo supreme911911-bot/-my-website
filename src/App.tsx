@@ -105,8 +105,7 @@ function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-lg">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
         <a href="#top" className="font-display text-lg font-bold uppercase tracking-tight text-white">
-          Ульянов Артём<span className="text-[var(--lime)]" style={{ ["--lime" as string]: LIME }}>.</span>
-          <span className="hidden text-white/40 sm:inline"> / микро-продукты</span>
+          Микро-продукты
         </a>
         <nav className="hidden items-center gap-7 lg:flex">
           {links.map((l) => (
@@ -690,9 +689,7 @@ function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black py-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center gap-6 px-5 text-center sm:px-8">
-        <div className="font-display text-lg font-bold uppercase text-white">
-          Ульянов Артём<span className="text-[var(--lime)]" style={{ ["--lime" as string]: LIME }}>.</span>
-        </div>
+        <div className="font-display text-lg font-bold uppercase text-white">Микро-продукты</div>
         <p className="max-w-xl text-xs text-white/35">
           Курс «Деньги на микро-продуктах» — авторская система заработка в Instagram с помощью
           ИИ. Результаты индивидуальны и зависят от твоих действий. По любым вопросам —
