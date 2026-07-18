@@ -703,6 +703,11 @@ function Footer() {
           <p>ИНН: 614009940827</p>
           <p>Телефон: +7 900 188-15-88 · Email: top.podsmotreno@mail.ru</p>
           <p>Данные о лицензии/аккредитации: не требуется</p>
+          <p className="mt-2">
+            <a href="/oferta.html" className="underline hover:text-white/50">
+              Публичная оферта
+            </a>
+          </p>
         </div>
         <div className="text-xs text-white/25">© {new Date().getFullYear()} Ульянов Артём. Все права защищены.</div>
       </div>
