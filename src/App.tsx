@@ -696,14 +696,7 @@ function Footer() {
           top.podsmotreno@mail.ru
         </p>
         <div className="max-w-xl border-t border-white/10 pt-5 text-[11px] leading-relaxed text-white/25">
-          <p className="mb-1 font-semibold uppercase tracking-wide text-white/35">
-            Информация о поставщике услуг
-          </p>
-          <p>Ульянов Артём Владимирович, г. Харцызск</p>
-          <p>ИНН: 614009940827</p>
-          <p>Телефон: +7 900 188-15-88 · Email: top.podsmotreno@mail.ru</p>
-          <p>Данные о лицензии/аккредитации: не требуется</p>
-          <p className="mt-2">
+          <p>
             <a href="/oferta.html" className="underline hover:text-white/50">
               Публичная оферта
             </a>
