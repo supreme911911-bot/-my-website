@@ -156,7 +156,7 @@ function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <CountdownTimer className="hidden sm:flex" />
+          <CountdownTimer className="flex" />
           <Button href={TELEGRAM_LINK} className="hidden !px-5 !py-2.5 !text-xs sm:inline-flex">
             Забрать за 990₽
           </Button>
@@ -177,7 +177,6 @@ function Header() {
                 {l.label}
               </a>
             ))}
-            <CountdownTimer className="justify-center" />
             <Button href={TELEGRAM_LINK} className="!py-3 !text-xs">
               Забрать за 990₽
             </Button>
