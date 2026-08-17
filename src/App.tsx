@@ -91,7 +91,7 @@ function Marquee() {
   );
 }
 
-const TIMER_MINUTES = 20;
+const TIMER_SECONDS = 5 * 3600 + 15 * 60 + 43;
 const TIMER_STORAGE_KEY = "promo_deadline";
 
 function useCountdown() {
@@ -101,7 +101,7 @@ function useCountdown() {
     let deadline = Number(localStorage.getItem(TIMER_STORAGE_KEY));
     const now = Date.now();
     if (!deadline || deadline < now) {
-      deadline = now + TIMER_MINUTES * 60 * 1000;
+      deadline = now + TIMER_SECONDS * 1000;
       localStorage.setItem(TIMER_STORAGE_KEY, String(deadline));
     }
     const tick = () => {
@@ -119,7 +119,8 @@ function useCountdown() {
 function CountdownTimer({ className = "" }: { className?: string }) {
   const secondsLeft = useCountdown();
   if (secondsLeft === null) return null;
-  const mm = String(Math.floor(secondsLeft / 60)).padStart(2, "0");
+  const hh = String(Math.floor(secondsLeft / 3600)).padStart(2, "0");
+  const mm = String(Math.floor((secondsLeft % 3600) / 60)).padStart(2, "0");
   const ss = String(secondsLeft % 60).padStart(2, "0");
   return (
     <div
@@ -127,7 +128,7 @@ function CountdownTimer({ className = "" }: { className?: string }) {
       style={{ ["--lime" as string]: LIME }}
     >
       <span className="hidden lg:inline">Цена вырастет через</span>
-      <span>{mm}:{ss}</span>
+      <span>{hh}:{mm}:{ss}</span>
     </div>
   );
 }
