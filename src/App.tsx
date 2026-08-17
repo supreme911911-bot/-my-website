@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const LIME = "#d7ff3d";
 
@@ -91,6 +91,47 @@ function Marquee() {
   );
 }
 
+const TIMER_MINUTES = 20;
+const TIMER_STORAGE_KEY = "promo_deadline";
+
+function useCountdown() {
+  const [secondsLeft, setSecondsLeft] = useState<number | null>(null);
+
+  useEffect(() => {
+    let deadline = Number(localStorage.getItem(TIMER_STORAGE_KEY));
+    const now = Date.now();
+    if (!deadline || deadline < now) {
+      deadline = now + TIMER_MINUTES * 60 * 1000;
+      localStorage.setItem(TIMER_STORAGE_KEY, String(deadline));
+    }
+    const tick = () => {
+      const diff = Math.max(0, Math.round((deadline - Date.now()) / 1000));
+      setSecondsLeft(diff);
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return secondsLeft;
+}
+
+function CountdownTimer({ className = "" }: { className?: string }) {
+  const secondsLeft = useCountdown();
+  if (secondsLeft === null) return null;
+  const mm = String(Math.floor(secondsLeft / 60)).padStart(2, "0");
+  const ss = String(secondsLeft % 60).padStart(2, "0");
+  return (
+    <div
+      className={`flex items-center gap-1.5 border border-[var(--lime)]/40 bg-[var(--lime)]/10 px-2.5 py-1.5 font-display text-xs font-bold tabular-nums text-[var(--lime)] ${className}`}
+      style={{ ["--lime" as string]: LIME }}
+    >
+      <span className="hidden sm:inline">Цена вырастет через</span>
+      <span>{mm}:{ss}</span>
+    </div>
+  );
+}
+
 function Header() {
   const [open, setOpen] = useState(false);
   const links = [
@@ -115,6 +156,7 @@ function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
+          <CountdownTimer className="hidden sm:flex" />
           <Button href={TELEGRAM_LINK} className="hidden !px-5 !py-2.5 !text-xs sm:inline-flex">
             Забрать за 990₽
           </Button>
@@ -135,6 +177,7 @@ function Header() {
                 {l.label}
               </a>
             ))}
+            <CountdownTimer className="justify-center" />
             <Button href={TELEGRAM_LINK} className="!py-3 !text-xs">
               Забрать за 990₽
             </Button>
