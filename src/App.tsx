@@ -123,10 +123,10 @@ function CountdownTimer({ className = "" }: { className?: string }) {
   const ss = String(secondsLeft % 60).padStart(2, "0");
   return (
     <div
-      className={`flex items-center gap-1.5 border border-[var(--lime)]/40 bg-[var(--lime)]/10 px-2.5 py-1.5 font-display text-xs font-bold tabular-nums text-[var(--lime)] ${className}`}
+      className={`flex items-center gap-1 border border-r-0 border-[var(--lime)]/50 bg-black px-2 font-display text-[11px] font-bold tabular-nums text-[var(--lime)] sm:px-2.5 sm:text-xs ${className}`}
       style={{ ["--lime" as string]: LIME }}
     >
-      <span className="hidden sm:inline">Цена вырастет через</span>
+      <span className="hidden lg:inline">Цена вырастет через</span>
       <span>{mm}:{ss}</span>
     </div>
   );
@@ -156,10 +156,12 @@ function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <CountdownTimer className="flex" />
-          <Button href={TELEGRAM_LINK} className="hidden !px-5 !py-2.5 !text-xs sm:inline-flex">
-            Забрать за 990₽
-          </Button>
+          <div className="flex items-stretch">
+            <CountdownTimer />
+            <Button href={TELEGRAM_LINK} className="!px-3 !py-2 !text-[11px] sm:!px-5 sm:!py-2.5 sm:!text-xs">
+              Забрать за 990₽
+            </Button>
+          </div>
           <button
             onClick={() => setOpen(!open)}
             className="grid h-10 w-10 place-items-center border border-white/15 text-white lg:hidden"
