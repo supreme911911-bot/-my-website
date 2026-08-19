@@ -160,7 +160,9 @@ function Header() {
           <div className="flex items-stretch">
             <CountdownTimer />
             <Button href={TELEGRAM_LINK} className="!px-3 !py-2 !text-[11px] sm:!px-5 sm:!py-2.5 sm:!text-xs">
-              Забрать за 990₽
+              <span className="hidden sm:inline">Забрать за </span>
+              <span className="mr-1 opacity-60 line-through">17 900₽</span>
+              990₽
             </Button>
           </div>
           <button
@@ -181,7 +183,7 @@ function Header() {
               </a>
             ))}
             <Button href={TELEGRAM_LINK} className="!py-3 !text-xs">
-              Забрать за 990₽
+              Забрать за <span className="mx-1 opacity-60 line-through">17 900₽</span> 990₽
             </Button>
           </div>
         </div>
